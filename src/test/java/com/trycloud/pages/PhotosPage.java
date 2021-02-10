@@ -11,6 +11,14 @@ public class PhotosPage {
 
     private WebDriver driver= Driver.get();
 
+    // photos Menu Button
+    @FindBy(xpath = "//a[@class='app-navigation-toggle']")
+    private  WebElement photosMenuButton;
+
+    // photos module menu list
+    @FindBy(xpath = "//ul[@class='app-navigation__list']")
+    private  WebElement photosModuleMenu;
+
    // all elements for Your photo module
     @FindBy(xpath = "//span[@title='Your photos']")
     private WebElement yourPhotosModule;
@@ -62,10 +70,6 @@ public class PhotosPage {
     @FindBy(xpath = "//*[@id=\"app-content-vue\"]/div/div[2]/h2")
     private WebElement displayedMessage;
 
-    @FindBy(xpath = "//a[@class='app-navigation-toggle']")
-    private  WebElement photosMenu;
-
-
 
     public PhotosPage(){
         PageFactory.initElements(driver,this);
@@ -105,6 +109,9 @@ public class PhotosPage {
     public WebElement getYourTaggedPhotosLabelText() {
         return yourTaggedPhotosLabelText;
     }
+
+   // check if photos module list is displayed
+
 
 
 
