@@ -23,12 +23,68 @@ public class DashboardPage {
     @FindBy(css = "svg[class='material-design-icon__svg']")
     private WebElement search;
 
+    @FindBy(css = "div[class='notifications-button menutoggle']")
+    private WebElement notification;
 
+    @FindBy(css = "div[class='icon-contacts menutoggle']")
+    private WebElement contacts;
+
+    @FindBy(css = "div[class='avatardiv avatardiv-shown']")
+    private WebElement avatar;
+
+    @FindBy(css = "li[data-id='logout']")
+    private WebElement logout;
+
+    public WebElement getStatus() {
+        return status;
+    }
+
+    public WebElement getWeather() {
+        return weather;
+    }
+
+    public WebElement getCustomize() {
+        return customize;
+    }
+
+    public WebElement getSearch() {
+        return search;
+    }
+
+    public WebElement getNotification() {
+        return notification;
+    }
+
+    public WebElement getContacts() {
+        return contacts;
+    }
+
+    public WebElement getAvatar() {
+        return avatar;
+    }
+
+    public WebElement getLogout() {
+        return logout;
+    }
 
     public DashboardPage(){
         PageFactory.initElements(Driver.get(), this);
 
     }
+
+    /**
+     * @param tab
+     * dashboard
+     * files
+     * photos
+     * activity
+     * spreed
+     * mail
+     * contacts
+     * circles
+     * calendar
+     * deck
+     */
 
     //TryCloud Navigation
     public void navigateTo(String tab){
@@ -37,6 +93,14 @@ public class DashboardPage {
         WebDriverWait wait = new WebDriverWait(Driver.get(), 10);
         wait.until(ExpectedConditions.elementToBeClickable(tabElement)).click();
 
+    }
+
+    public LoginPage logout(){
+        WebDriverWait wait = new WebDriverWait(Driver.get(), 10);
+        wait.until(ExpectedConditions.elementToBeClickable(avatar)).click();
+        wait.until(ExpectedConditions.elementToBeClickable(logout)).click();
+
+        return new LoginPage();
 
     }
 
