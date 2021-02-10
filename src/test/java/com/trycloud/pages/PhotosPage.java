@@ -112,6 +112,9 @@ public class PhotosPage {
 
    // check if photos module list is displayed
 
+    public boolean isModuleDisplayed(){
+        return yourPhotosModule.isDisplayed();
+    }
 
 
 
