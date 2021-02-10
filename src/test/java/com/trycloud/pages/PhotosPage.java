@@ -66,16 +66,10 @@ public class PhotosPage {
     private  WebElement photosMenu;
 
 
-
+  // access to photos modules
     public void photosModule(String moduleName){
         driver.findElement(By.xpath("//span[@title='"+moduleName+"']")).click();
     }
-
-
-
-
-
-
 
     public PhotosPage(){
         PageFactory.initElements(driver,this);
