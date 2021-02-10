@@ -12,7 +12,24 @@ import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 
 public abstract  class TestBase {
-   public WebDriver driver = Driver.get();
+
+    private WebDriver driver = Driver.get();
+
+    private static Properties configFile;
+
+    public TestBase(){
+       try {
+           //IO-->input output
+           FileInputStream file = new FileInputStream("src/test/java/com/trycloud/utilities/config/configuration.properties");
+            configFile = new Properties();
+           configFile.load(file);
+           file.close();
+
+       } catch (IOException e) {
+           System.out.println("File was not loaded");
+           e.printStackTrace();
+       }
+}
 
     @BeforeMethod
     public void setUp(){

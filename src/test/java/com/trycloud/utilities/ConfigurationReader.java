@@ -15,7 +15,7 @@ public class ConfigurationReader {
     static {
         try {
             //IO-->input output
-            FileInputStream file = new FileInputStream("configuration.properties");
+            FileInputStream file = new FileInputStream("src/test/java/com/trycloud/utilities/config/configuration.properties");
             configFile = new Properties();
             configFile.load(file);
             file.close();
