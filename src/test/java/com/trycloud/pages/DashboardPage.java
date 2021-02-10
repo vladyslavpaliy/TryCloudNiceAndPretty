@@ -1,2 +1,7 @@
-package com.trycloud.pages;public class DashboardPage {
+package com.trycloud.pages;
+
+public class DashboardPage {
+
+
+
 }
