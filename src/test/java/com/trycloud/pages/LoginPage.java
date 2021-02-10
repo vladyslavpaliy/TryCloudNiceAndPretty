@@ -8,9 +8,14 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import java.awt.*;
+import java.sql.SQLOutput;
+import java.util.List;
+import java.util.Scanner;
+
 public class LoginPage {
 
-   private WebDriver driver = Driver.get();
+    private final WebDriver driver = Driver.get();
 
     @FindBy(id = "user")
     private WebElement usernameField;
@@ -22,18 +27,20 @@ public class LoginPage {
     private WebElement forgotPassword;
     @FindBy(css = "[class='warning wrongPasswordMsg']")
     private WebElement warningMsg;
+    @FindBy(xpath = "//li[contains(@data-id,'contacts')]")
+    public WebElement contactsPage;
 
 
-    public LoginPage(){
-        PageFactory.initElements(driver,this);
+    public LoginPage() {
+        PageFactory.initElements(driver, this);
     }
 
-    public void login(){
+    public void login() {
         usernameField.sendKeys(ConfigurationReader.getProperty("username1"));
         passwordField.sendKeys(ConfigurationReader.getProperty("password"), Keys.ENTER);//click
     }
 
-    public String getWarningMsg(){
+    public String getWarningMsg() {
         return warningMsg.getText();
     }
 
@@ -45,8 +52,8 @@ public class LoginPage {
         return driver.getTitle();
     }
 
-    public DashboardPage loginHappyPath(){
-        usernameField.sendKeys(ConfigurationReader.getProperty("username"));
+    public DashboardPage loginHappyPath() {
+        usernameField.sendKeys(ConfigurationReader.getProperty("username1"));
         passwordField.sendKeys(ConfigurationReader.getProperty("password"));
         loginButton.click();
         return new DashboardPage();
