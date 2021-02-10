@@ -15,7 +15,7 @@ public abstract  class TestBase {
 
     private WebDriver driver = Driver.get();
 
-   private static Properties configFile;
+    private static Properties configFile;
 
     public TestBase(){
        try {
