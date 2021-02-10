@@ -16,7 +16,7 @@ public class PhotosPage {
     private WebElement yourPhotosModule;
 
     @FindBy(xpath = "//h2[contains(text(),'Your photos')]")
-    private WebElement yourPhotosLabelTest;
+    private WebElement yourPhotosLabelText;
 
 
     // all elements for Your videos module
@@ -24,7 +24,7 @@ public class PhotosPage {
     private WebElement yourVideosModule;
 
     @FindBy(xpath = "//h2[contains(text(),'Your videos')]")
-    private WebElement yourVideosLabelTest;
+    private WebElement yourVideosLabelText;
 
 
     // all elements for  Favorites module
@@ -66,16 +66,45 @@ public class PhotosPage {
     private  WebElement photosMenu;
 
 
-  // access to photos modules
-    public void photosModule(String moduleName){
-        driver.findElement(By.xpath("//span[@title='"+moduleName+"']")).click();
-    }
 
     public PhotosPage(){
         PageFactory.initElements(driver,this);
     }
 
+    // access to photos modules
+    public void photosModule(String moduleName){
+        driver.findElement(By.xpath("//span[@title='"+moduleName+"']")).click();
+    }
 
+    // returning text  from given module label webElement
+   public String getModuleLabelTest(WebElement module){
+        return module.getText();
+   }
+
+   // get methods for webElements
+    public WebElement getYourPhotosLabelText() {
+        return yourPhotosLabelText;
+    }
+
+    public WebElement getYourVideosLabelText() {
+        return yourVideosLabelText;
+    }
+
+    public WebElement getYourFavoritesLabelText() {
+        return yourFavoritesLabelText;
+    }
+
+    public WebElement getYourFoldersLabelText() {
+        return yourFoldersLabelText;
+    }
+
+    public WebElement getYourSharedWithYouLabelText() {
+        return yourSharedWithYouLabelText;
+    }
+
+    public WebElement getYourTaggedPhotosLabelText() {
+        return yourTaggedPhotosLabelText;
+    }
 
 
 
