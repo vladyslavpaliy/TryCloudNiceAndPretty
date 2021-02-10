@@ -130,7 +130,7 @@ public class DashboardPage {
 
     public void searchInput(String txt){
        WebDriverWait wait = new WebDriverWait(Driver.get(), 10);
-       wait.until(ExpectedConditions.visibilityOf(searchInput)).sendKeys(txt);
+       searchInput.sendKeys(txt);
        wait.until(ExpectedConditions.textToBePresentInElement(searchInput, txt));
        searchInput.sendKeys(Keys.ENTER);
 
