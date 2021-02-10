@@ -2,6 +2,7 @@ package com.trycloud.pages;
 
 import com.trycloud.utilities.Driver;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -35,6 +36,18 @@ public class DashboardPage {
     @FindBy(css = "li[data-id='logout']")
     private WebElement logout;
 
+    @FindBy(css = "li[data-id='help']")
+    private WebElement help;
+
+    @FindBy(css = "a[class='user-status-menu-item__toggle']")
+    private WebElement setStatus;
+
+    @FindBy(css = "li[data-id='settings']")
+    private WebElement settings;
+
+    @FindBy(css = "input[class='unified-search__form-input']")
+    private WebElement searchInput;
+
     public WebElement getStatus() {
         return status;
     }
@@ -67,11 +80,22 @@ public class DashboardPage {
         return logout;
     }
 
+    public WebElement getHelp() {
+        return help;
+    }
+
+    public WebElement getSetStatus() {
+        return setStatus;
+    }
+
+    public WebElement getSettings() {
+        return settings;
+    }
+
     public DashboardPage(){
         PageFactory.initElements(Driver.get(), this);
 
     }
-
     /**
      * @param tab
      * dashboard
@@ -91,7 +115,7 @@ public class DashboardPage {
         String tabXpath= "//li[@data-id='"+tab+"']";
         WebElement tabElement = Driver.get().findElement(By.xpath(tabXpath));
         WebDriverWait wait = new WebDriverWait(Driver.get(), 10);
-        wait.until(ExpectedConditions.elementToBeClickable(tabElement)).click();
+       wait.until(ExpectedConditions.elementToBeClickable(tabElement)).click();
 
     }
 
@@ -101,6 +125,14 @@ public class DashboardPage {
         wait.until(ExpectedConditions.elementToBeClickable(logout)).click();
 
         return new LoginPage();
+
+    }
+
+    public void searchInput(String txt){
+       WebDriverWait wait = new WebDriverWait(Driver.get(), 10);
+       wait.until(ExpectedConditions.visibilityOf(searchInput)).sendKeys(txt);
+       wait.until(ExpectedConditions.textToBePresentInElement(searchInput, txt));
+       searchInput.sendKeys(Keys.ENTER);
 
     }
 
