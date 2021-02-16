@@ -39,6 +39,11 @@ public class LoginPage {
         usernameField.sendKeys(ConfigurationReader.getProperty("username1"));
         passwordField.sendKeys(ConfigurationReader.getProperty("password"), Keys.ENTER);//click
     }
+    public void login(String username , String password) {
+        usernameField.sendKeys(username);
+        passwordField.sendKeys(password, Keys.ENTER);//click
+    }
+
 
     public String getWarningMsg() {
         return warningMsg.getText();
