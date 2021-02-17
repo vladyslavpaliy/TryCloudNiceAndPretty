@@ -128,6 +128,7 @@ public class DashboardPage {
 
     }
 
+    //not working, fix it
     public void searchInput(String txt){
        WebDriverWait wait = new WebDriverWait(Driver.get(), 10);
        searchInput.sendKeys(txt);

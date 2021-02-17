@@ -1,10 +1,17 @@
 package com.trycloud.base;
 
+import com.aventstack.extentreports.ExtentReports;
+import com.aventstack.extentreports.ExtentTest;
+import com.aventstack.extentreports.reporter.ExtentHtmlReporter;
+import com.trycloud.utilities.BrowserUtils;
 import com.trycloud.utilities.ConfigurationReader;
 import com.trycloud.utilities.Driver;
 import org.openqa.selenium.WebDriver;
+import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
+import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.BeforeTest;
 
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -14,8 +21,9 @@ import java.util.concurrent.TimeUnit;
 public abstract  class TestBase {
 
     private WebDriver driver = Driver.get();
-
     private static Properties configFile;
+
+
 
     public TestBase(){
        try {
@@ -31,6 +39,8 @@ public abstract  class TestBase {
        }
 }
 
+
+
     @BeforeMethod
     public void setUp(){
         driver.get(ConfigurationReader.getProperty("url"));
@@ -38,8 +48,15 @@ public abstract  class TestBase {
         driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
 
     }
+    /*
+    ITest result it's an interface that describes the result of the test
+     */
 
     @AfterMethod
-    public void tearDown(){ driver.close(); }
+    public void tearDown(ITestResult iTestResult){
+        if(iTestResult.getStatus() == ITestResult.FAILURE){
+            BrowserUtils.getScreenshot(iTestResult.getName());
+        }
+        driver.close(); }
 
 }

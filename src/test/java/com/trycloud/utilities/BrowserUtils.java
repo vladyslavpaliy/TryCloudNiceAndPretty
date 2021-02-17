@@ -6,10 +6,13 @@ import org.openqa.selenium.TakesScreenshot;
 
 import java.io.File;
 import java.io.IOException;
+import java.time.LocalDateTime;
 
 public class BrowserUtils {
     public static String getScreenshot(String name){
-        String path = System.getProperty("user.dir")+"/test-output/screenshots"+name+".png";
+        //if you wanna be mre specific and avoid name duplication
+        name=name+"_"+ LocalDateTime.now();
+        String path = System.getProperty("user.dir")+"/test-output/screenshots/"+name+".png";
         //it'll create a new folder in your project
         //system.getProperty("user.dir)-->location of your project
 
@@ -21,7 +24,7 @@ public class BrowserUtils {
         File destination = new File(path);//that's where we'll store a screenshot
 
         try {
-            //cope file to a previously specified location
+            //copy file to a previously specified location
             FileUtils.copyFile(source, destination);
         } catch (IOException e) {
             e.printStackTrace();

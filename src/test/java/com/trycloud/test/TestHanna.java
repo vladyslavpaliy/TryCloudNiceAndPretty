@@ -17,6 +17,7 @@ public class TestHanna extends TestBase {
         Faker faker = new Faker();
         loginPage.login(faker.name().username(), faker.internet().password());
         Assert.assertEquals(loginPage.getWarningMsg(), "Wrong username or password.");
+        //takes a screenshot
         BrowserUtils.getScreenshot("login_page");
     }
 }
