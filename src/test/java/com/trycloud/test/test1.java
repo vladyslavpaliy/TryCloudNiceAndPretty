@@ -13,5 +13,6 @@ public class test1 extends TestBase{
         LoginPage sd = new LoginPage();
         sd.loginHappyPath();
         System.out.println(ConfigurationReader.getProperty("qa2"));
+
     }
 }

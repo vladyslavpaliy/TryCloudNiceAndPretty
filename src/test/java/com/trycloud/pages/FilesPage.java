@@ -9,10 +9,12 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.annotations.Test;
 
+import java.util.List;
+
 public class FilesPage{
 
     private WebDriver driver = Driver.get();
-
+    // All FILES
     @FindBy (xpath = "//*[@id=\"app-navigation\"]/ul/li[1]/a")
     public WebElement allFilesButton;
     @FindBy (xpath = "//*[@id=\"app-navigation\"]/ul/li[2]/a")
@@ -28,9 +30,25 @@ public class FilesPage{
     @FindBy (xpath = "//*[@id=\"app-navigation\"]/ul/li[7]/a")
     public WebElement deletedFilesButton;
 
-    @FindBy (xpath = "///*[@id=\"headerSelection\"]/label")
-    public WebElement selectAllButton;
+    @FindBy (xpath = "/html/body/div[3]/div[2]/div[2]/table/thead/tr/th[1]/label")
+    public WebElement selectAllFilesCheckbox;
+    //Action icon
+    @FindBy (xpath = "//*[@id=\"fileList\"]/tr[1]/td[2]/a/span[3]/a[2]")
+    public WebElement actionIcon;
+    @FindBy (xpath = "//*[@id=\"fileList\"]/tr[1]/td[2]/div/ul/li[3]/a/span[2]")
+    public WebElement addOrRemoveFromFavorites;
+    @FindBy (xpath = "//*[@id=\"fileList\"]/tr[1]/td[2]/div/ul/li[4]/a/span[2]")
+    public WebElement details;
+    @FindBy (xpath = "//*[@id=\"fileList\"]/tr[1]/td[2]/div/ul/li[5]/a/span[2]")
+    public WebElement rename;
+    @FindBy (xpath = "//*[@id=\"fileList\"]/tr[1]/td[2]/div/ul/li[6]/a/span[2]")
+    public WebElement moveOrCopy;
+    @FindBy (xpath = "//*[@id=\"fileList\"]/tr[1]/td[2]/div/ul/li[7]/a/span[2]")
+    public WebElement download;
+    @FindBy (xpath = "//*[@id=\"fileList\"]/tr[1]/td[2]/div/ul/li[8]/a/span[2]")
+    public WebElement deleteFolderOrFile;
 
+    // + options
     @FindBy (xpath = "//*[@id=\"controls\"]/div[2]/a/span[1]")
     public WebElement createNewButton;
     @FindBy (xpath = "//*[@id=\"controls\"]/div[2]/div[2]/ul/li[1]/label/span[2]")
@@ -45,6 +63,11 @@ public class FilesPage{
     public WebElement newSpreadSheetButton;
     @FindBy (xpath = "//*[@id=\"controls\"]/div[2]/div[2]/ul/li[6]/a/span[2]")
     public WebElement newPresentationButton;
+
+
+    @FindBy(xpath = "//*[@id=\"fileList\"]/tr[1]/td[1]/label")
+    public List<WebElement> allPresentFilesList;
+
 
     public FilesPage(){
         PageFactory.initElements(driver,this);
